@@ -1,7 +1,15 @@
+"""Игровой модуль.
+Содержит функции выбора класса персонажа, прокачки навыков персонажа,
+применения атаки, защиты и специального навыка персонажа.
+"""
+
+
 from random import randint
+from graphic_arts.start_game_banner import run_screensaver
 
 
 def attack(char_name: str, char_class: str) -> str:
+    """Функция атки для разных классов персонажей."""
     if char_class == 'warrior':
         return (f'{char_name} нанёс урон противнику'
                 f'равный {5 + randint(3, 5)}')
@@ -14,6 +22,7 @@ def attack(char_name: str, char_class: str) -> str:
 
 
 def defence(char_name: str, char_class: str) -> str:
+    """Функция защиты для разных классов персонажей."""
     if char_class == 'warrior':
         return (f'{char_name} блокировал {10 + randint(5, 10)} урона')
     if char_class == 'mage':
@@ -23,6 +32,7 @@ def defence(char_name: str, char_class: str) -> str:
 
 
 def special(char_name: str, char_class: str) -> str:
+    """Функция применения специального навыка для разных классов персонажей."""
     if char_class == 'warrior':
         return (f'{char_name} применил специальное умение'
                 f'«Выносливость {80 + 25}»')
@@ -35,6 +45,7 @@ def special(char_name: str, char_class: str) -> str:
 
 
 def start_training(char_name: str, char_class: str) -> str:
+    """Функция тренировки наыков для разных классов персонажей."""
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец'
               'ближнего боя.')
@@ -65,6 +76,7 @@ def start_training(char_name: str, char_class: str) -> str:
 
 
 def choice_char_class() -> str:
+    """Ввод имени и выбор класса персонажа."""
     approve_choice: str = ''
     char_class: str = ''
     while approve_choice != 'y':
@@ -83,13 +95,15 @@ def choice_char_class() -> str:
         if char_class == 'healer':
             print('Лекарь — могущественный заклинатель. Черпает'
                   'силы из природы, веры и духов.')
-            approve_choice = (input('Нажми (Y), чтобы подтвердить выбор,'
-                                    'или любую другую кнопку, чтобы выбрать'
-                                    'другого персонажа ').lower())
+
+        approve_choice = (input('Нажми (Y), чтобы подтвердить выбор,'
+                                'или любую другую кнопку, чтобы выбрать'
+                                'другого персонажа ').lower())
     return char_class
 
 
-def main() -> None:
+if __name__ == '__main__':
+    run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name: str = input('...назови себя: ')
